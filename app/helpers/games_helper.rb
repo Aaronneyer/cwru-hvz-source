@@ -20,7 +20,7 @@ module GamesHelper
       tag_string = "#{scoreboard_highlight(tag_count)} #{tag_count == 1 ? 'tag' : 'tags'}"
       starve_string = "(Starves in less than #{scoreboard_highlight(dies_in)} hours)"
 
-      [tag_string, starve_string].join(' ').html_safe
+      [tag_string].html_safe
     else
       'Deceased!'
     end
