@@ -11,7 +11,6 @@
       data.addColumn({type: 'boolean', role: 'certainty'});
       data.addColumn('number', 'Deceased');
       data.addColumn({type: 'boolean', role: 'certainty'});
-
       data.addRows(graph_data);
 
       for (var i=0; i < data.getNumberOfRows(); i++) {
@@ -34,22 +33,17 @@
     $(function() {
       /*
       Here's the data!
-
         Column 1:   Hours since the beginning of the game.
         Column 2-4: Humans, Zombies, Deceased at that Hour
         Column 5:   Whether this is the actual game state (true) or a projection
                     (false)
-
       There will up to 240 entries in the data set.
-
       If you're going to do something with this data, let us know! You don't
       have to, but we're curious where our data ends up :). For example, a
       biology professor used our data to write a disease spread rate calculation
       lab.
-
       casehvz@gmail.com
       */
-
       var graph_data = #{@graphdata.to_json}
       drawChart(graph_data);
     });
@@ -109,7 +103,8 @@
       - prevscore = -1
       - currentnum = 1
       - countnum = 1
-      -all_players = @game.registrations.group_by(:faction_id)
+      -all_players = @game.registrations.group_by
+    %div.humans.clear{:style=>"float:left;width:40%"}
       -all_players[0].each do |p|
         - if p.display_score == prevscore
           - number = currentnum
@@ -118,6 +113,7 @@
           - prevscore = p.display_score
         = render 'scoreboard', player: p, number: number
         - countnum += 1
+    %div.zombies.clear{:style=>"float:right;width:40%"}
       -all_players[1].each do |p|
         - if p.display_score == prevscore
          - number = currentnum
