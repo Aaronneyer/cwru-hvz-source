@@ -9,8 +9,7 @@
       data.addColumn({type: 'boolean', role: 'certainty'});
       data.addColumn('number', 'Zombies');
       data.addColumn({type: 'boolean', role: 'certainty'});
-      data.addColumn('number', 'Deceased');
-      data.addColumn({type: 'boolean', role: 'certainty'});
+
 
       data.addRows(graph_data);
 
@@ -109,8 +108,8 @@
       - prevscore = -1
       - currentnum = 1
       - countnum = 1
-      -all_players = @game.registrations.group_by(&:display_faction_id).sort_by{|x| x.display_score}.reverse_each do |p|
-    %div.humans.clear{:style=>"float:left;width:40%"}
+      -all_players = @game.registrations.group_by(&:display_faction_id).sort_by{|x| x.display_score}
+    %div.humans.clear{:style=>"float:left;width:350px"}
       -all_players[0].each do |p|
         - if p.display_score == prevscore
           - number = currentnum
@@ -123,7 +122,7 @@
       - prevscore = -1
       - currentnum = 1
       - countnum = 1
-    %div.humans.clear{:style=>"float:right;width:40%"}
+    %div.zombies.clear{:style=>"float:right;width:350px"}
       -all_players[1].each do |p|
         - if p.display_score == prevscore
          - number = currentnum
