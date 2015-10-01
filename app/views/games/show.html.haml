@@ -113,7 +113,7 @@
           - prevscore = p.display_score
         = render 'scoreboard', player: p, number: number
         - countnum += 1
-    %div.humans.clear{:style=>"float:right;width:400px"}
+    %div.zombies.clear{:style=>"float:right;width:400px"}
       -all_players[1].each do |p|
         - if p.display_score == prevscore
          - number = currentnum
